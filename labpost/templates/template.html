@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+<!--the title-->
+{% block title %} Hospital Lab {% endblock %}
+
+<!--page content-->
+{% block page %}
+
+<h1>This is the test page from {{ request.get_full_path }}</h1>
+
+<!--hold the form-->
+<table class="table-borderless">
+    <tr class="recordItem">
+        {% for field in form %}
+
+        <td class="col-sm-3">
+            {{ field }}
+        </td>
+
+        {% endfor %}
+    </tr>
+    <!-- {{form.as_p}} -->
+</table>
+
+{%endblock%}
