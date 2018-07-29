@@ -9,17 +9,57 @@
 <h1>This is the test page from {{ request.get_full_path }}</h1>
 
 <!--hold the form-->
-<table class="table-borderless">
-    <tr class="recordItem">
-        {% for field in form %}
+<table class="table-borderd">
+    <form action="" method="POST">
+        {% csrf_token %}
 
-        <td class="col-sm-3">
-            {{ field }}
-        </td>
+        <thead>
+            <td class="col-sm-3"> Test </td>
+            <td class="col-sm-3"> Result </td>
+            <td class="col-sm-3"> Flag </td>
+            <td class="col-sm-3"> Reference </td>
+        </thead>
 
-        {% endfor %}
-    </tr>
-    <!-- {{form.as_p}} -->
+        <tr class="recordItem">
+            {% for field in form %}
+
+            <td class="col-sm-3">
+                {{ field }}
+            </td>
+
+            {% endfor %}
+        </tr>
+        <!-- <tr class="recordItem">
+            {% for field in form %}
+
+            <td class="col-sm-3">
+                {{ field }}
+            </td>
+
+            {% endfor %}
+        </tr>
+        <tr class="recordItem">
+            {% for field in form %}
+
+            <td class="col-sm-3">
+                {{ field }}
+            </td>
+
+            {% endfor %}
+        </tr>
+        <tr class="recordItem">
+            {% for field in form %}
+
+            <td class="col-sm-3">
+                {{ field }}
+            </td>
+
+            {% endfor %}
+        </tr> -->
+        
+        <input type="submit" value="Save">
+
+    </form>
 </table>
 
 {%endblock%}

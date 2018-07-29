@@ -1,6 +1,7 @@
 from django.db import models
 
 # lab test record model
+FLAG_CHOICE = ('N', 'H', 'L',)
 class TestItem (models.Model):
     """This class is the actual record item
        to get the lab test."""

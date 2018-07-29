@@ -1,9 +1,21 @@
 
-#page {
-    background-color: rgb(224, 131, 16);
+body {
+    background-color: rgba(119, 79, 143);
 }
 
-.recordItem input {
-    height: 100px;
+.recordItem textarea,input{
+    height: 30px;
+    width: 100%;
+    /* background-color: inherit;
+    border: none; */
 }
 
+table {
+    background-color: rgba(240, 248, 255,0.5);
+    border-style: hidden;
+}
+
+table td {
+    border-collapse: collapse;
+    border: 1px brown solid;
+}

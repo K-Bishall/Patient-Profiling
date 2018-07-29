@@ -1,3 +1,4 @@
+{% load static %}
 <!-- Base template for the project -->
 <!DOCTYPE html>
 <html lang="en">
@@ -9,12 +10,11 @@
 
     <title>{% block title %}{%endblock%}</title>
 
-    {% load static %}
-    <link rel="stylesheet" type="text/css" herf="{% static 'labpost/static/style.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 
-<body style="background-color:rgb(51, 88, 143); color: mistyrose">
+<body>
     <!--The main page-->
     <div id="page" class="container-fluid">
 
