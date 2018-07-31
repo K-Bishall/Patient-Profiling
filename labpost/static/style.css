@@ -1,13 +1,13 @@
 
 body {
-    /* background-color: rgba(119, 79, 143); */
+    background-color: rgba(119, 79, 143);
 }
 
-table tbody {
+#labtest table tbody {
     background-color:rgb(233, 233, 248);
 }
 
-table thead {
+#labtest table thead {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 130%;
     text-align: center;
@@ -19,8 +19,14 @@ table thead {
 }
 
 
-#patient_info p {
+#labtest #patient_info p {
     /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    font-size: 120%;
+    text-align: center;
+    margin: 0%;
+}
+#labReport #patient_info p {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 120%;
     text-align: center;
     margin: 0%;
