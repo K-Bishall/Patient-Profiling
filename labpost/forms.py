@@ -8,15 +8,8 @@ class TestItemForm (ModelForm):
         fields = [
             'testName',
             'result',
-            'flag',
-            'reference',
         ]
         labels = {
             'testName' : '',
             'result' : '',
-            'flag' : '',
-            'reference' : '',
-        }
-        widgets = {
-            'reference' : Textarea(attrs={'cols': 20, 'rows' : 5})
         }

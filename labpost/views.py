@@ -2,45 +2,31 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.forms import formset_factory
+from django.utils import timezone
 
 from .forms import TestItemForm
+from .models import User, TestItem
 
+key = '10001'
 
 # Create your views here.
 def labReport(request):
-    """Generate lab test report form"""
+    """Generate lab test input form"""
 
-    testItemFormset = formset_factory(TestItemForm, extra=2)
-
-    # if request.method == 'POST':
-    #     testItem = TestItemForm(request.POST)
-
-    #     if testItem.is_valid():
-    #         testItem.save()
-
-    #     return HttpResponseRedirect("")
-
-    # if request.method == 'POST':
-    #     formset = testItemFormset(request.POST)
-    #     if formset.is_valid():
-    #         # formset = formset.cleaned_data
-    #         for test in formset:
-    #             if test.has_changed():
-    #                 test.save()
-
-    #     return HttpResponseRedirect("")
+    testItemFormset = formset_factory(TestItemForm, extra=5)
 
     if request.method == 'POST':
         formset = testItemFormset(request.POST)
         if formset.is_valid():
-            for test in formset:
-                data = test.cleaned_data
-                flag = True
-                for _, value in data:
-                    if value == '':
-                        flag = False
-                        break
-                if flag:
+            for form in formset:
+                length = len(form.cleaned_data)
+                print("form : " + str(length))
+                print("data : ")
+                print(form.cleaned_data)
+                if length > 0 and form.is_valid():
+                    test = form.save(commit=False)
+                    test.user = User.objects.get(pk = key)
+                    test.dateStamp = timezone.now().date()
                     test.save()
 
         return HttpResponseRedirect("")

@@ -11,32 +11,20 @@
 <!--hold the form-->
 <table class="table-borderd">
     <form action="" method="POST">
-        {% csrf_token %}
+        {% csrf_token %} 
         {{ formset.management_form }}
-        <tr class = "error">
-            <td>{{msg}}</td>
+        <tr class="error">
+            <td> {{ msg }} </td>
         </tr>
 
         <thead>
             <td class="col-sm-3"> Test </td>
             <td class="col-sm-3"> Result </td>
-            <td class="col-sm-3"> Flag </td>
-            <td class="col-sm-3"> Reference </td>
         </thead>
-<!-- 
-        <tr class="recordItem">
-            {% for field in form %}
-
-            <td class="col-sm-3">
-                {{ field }}
-            </td>
-
-            {% endfor %}
-        </tr> -->
 
         {% for form in formset %}
-        <tr class="recordItem">
-            {% for field in form  %}
+        <tr class="recordItem dynamic-form">
+            {% for field in form %}
             <td class="col-sm-3">
                 {{ field }}
             </td>
@@ -45,10 +33,16 @@
         {% endfor %}
 
         <tr>
-           <td colspan="4"> <input type="submit" value="Save"/></td>
+            <td colspan="2">
+                <input type="submit" value="Save" />
+            </td>
         </tr>
 
     </form>
 </table>
+
+<button type="button" class="add-row btn btn-primary">Add Field</button>
+<button type="button" class="delete-row btn btn-primary">Delete Field</button>
+
 
 {% endblock %}
