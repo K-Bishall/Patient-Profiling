@@ -8,4 +8,41 @@
 
 <h1>This is the test page from {{ request.get_full_path }}</h1>
 
-{%endblock%}
+<!--hold the form-->
+<table class="table-borderd">
+    <form action="" method="POST">
+        {% csrf_token %} 
+        {{ formset.management_form }}
+        <tr class="error">
+            <td> {{ msg }} </td>
+        </tr>
+
+        <thead>
+            <td class="col-sm-3"> Test </td>
+            <td class="col-sm-3"> Result </td>
+        </thead>
+
+        {% for form in formset %}
+        <tr class="recordItem dynamic-form">
+            {% for field in form %}
+            <td class="col-sm-3">
+                {{ field }}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Save" />
+            </td>
+        </tr>
+
+    </form>
+</table>
+
+<button type="button" class="add-row btn btn-primary">Add Field</button>
+<button type="button" class="delete-row btn btn-primary">Delete Field</button>
+
+
+{% endblock %}
