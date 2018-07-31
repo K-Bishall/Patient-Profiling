@@ -8,8 +8,12 @@
 
 <h1>This is the test page from {{ request.get_full_path }}</h1>
 
-<!--hold the form-->
-<table class="table-borderd">
+<!--TEST RECORD INPUT FORM-->
+<div class="container col-sm-4">
+    <div id="patient_info" class="col bg-dark text-white">
+        <p class="col text-center"> Patient's Name : {{ user }}</p>
+        <p class="col text-center"> {{ date }}</p>
+    </div>
     <form action="" method="POST">
         {% csrf_token %} 
         {{ formset.management_form }}
@@ -37,9 +41,15 @@
                 <input type="submit" value="Save" />
             </td>
         </tr>
-
-    </form>
-</table>
+        <!-- <tr class="row mx-auto">
+            <td class="mx-auto" colspan="2">
+                <input class="btn btn-success btn-lg" type="submit" value="Save" />
+            </td>
+        </tr> -->
+        
+    </table>
+</form>
+</div>
 
 <button type="button" class="add-row btn btn-primary">Add Field</button>
 <button type="button" class="delete-row btn btn-primary">Delete Field</button>

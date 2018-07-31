@@ -25,8 +25,6 @@ class TestModel(models.Model):
         return self.testName
 
 
-# FLAG_CHOICE = [('N', 'Normal'), ('H', 'High'), ('L', 'Low'), ]
-
 
 class TestItem (models.Model):
     """This actually represents multivalued attribute of 'User' Table
