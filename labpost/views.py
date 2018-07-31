@@ -8,7 +8,11 @@ from .forms import TestItemForm
 from .models import User, TestItem
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 key = '10001'
+=======
+key = '10003'
+>>>>>>> labtest
 =======
 key = '10003'
 >>>>>>> labtest
@@ -17,8 +21,17 @@ key = '10003'
 def labReport(request):
     """Generate lab test input form"""
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     testItemFormset = formset_factory(TestItemForm, extra=5)
+=======
+    template = 'template.html'
+
+    testItemFormset = formset_factory(TestItemForm, extra=10)
+
+    user = User.objects.get(pk = key)
+    date = timezone.now().date()
+>>>>>>> labtest
 =======
     template = 'template.html'
 
@@ -34,6 +47,7 @@ def labReport(request):
             for form in formset:
                 length = len(form.cleaned_data)
 <<<<<<< HEAD
+<<<<<<< HEAD
                 print("form : " + str(length))
                 print("data : ")
                 print(form.cleaned_data)
@@ -42,6 +56,8 @@ def labReport(request):
                     test.user = User.objects.get(pk = key)
                     test.dateStamp = timezone.now().date()
 =======
+=======
+>>>>>>> labtest
                 # print("form : " + str(length))
                 # print("data : ")
                 # print(form.cleaned_data)
@@ -49,6 +65,9 @@ def labReport(request):
                     test = form.save(commit=False)
                     test.user = user
                     test.dateStamp = date
+<<<<<<< HEAD
+>>>>>>> labtest
+=======
 >>>>>>> labtest
                     test.save()
 

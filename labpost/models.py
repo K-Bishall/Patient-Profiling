@@ -24,6 +24,11 @@ class TestModel(models.Model):
     def __str__(self):
         return self.testName
 
+    class Meta:
+        ordering = ['testName']
+
+
+# FLAG_CHOICE = [('N', 'Normal'), ('H', 'High'), ('L', 'Low'), ]
 
 
 class TestItem (models.Model):

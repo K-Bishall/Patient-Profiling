@@ -10,13 +10,18 @@
 
 <!--TEST RECORD INPUT FORM-->
 <div class="container col-sm-4">
+<<<<<<< HEAD
     <div id="patient_info" class="col bg-dark text-white">
+=======
+    <div id="patient_info" class="col bg-success text-white">
+>>>>>>> labtest
         <p class="col text-center"> Patient's Name : {{ user }}</p>
         <p class="col text-center"> {{ date }}</p>
     </div>
     <form action="" method="POST">
         {% csrf_token %} 
         {{ formset.management_form }}
+<<<<<<< HEAD
         <tr class="error">
             <td> {{ msg }} </td>
         </tr>
@@ -40,6 +45,40 @@
             <td colspan="2">
                 <input type="submit" value="Save" />
             </td>
+=======
+
+
+        <table class="table border">
+
+        <thead class="thead">
+            <tr class="row mx-auto">
+            <th scope="col" class="col-sm"> Test </th>
+            <th scope="col" class="col-sm"> Result </th>
+            </tr>
+        </thead>
+        
+        <tbody>
+
+            {% for form in formset %}
+            <tr class="recordItem row m-auto">
+                {% for field in form %}
+                <td class="p-1 mx-auto">
+                        {{ field }}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            
+            
+        </tbody>
+        <tr class="row mx-auto">
+            
+            <td class="mx-auto"><button type="button" class="btn btn-primary btn-lg">Add Field</button></td>
+            <!-- <td class="mx-auto"><button type="button" class="btn btn-primary">Delete Field</button></td> -->
+            <td class="mx-auto" colspan="2">
+                <input class="btn btn-success btn-lg" type="submit" value="Save" />
+            </td>
+>>>>>>> labtest
         </tr>
         <!-- <tr class="row mx-auto">
             <td class="mx-auto" colspan="2">
@@ -50,9 +89,12 @@
     </table>
 </form>
 </div>
+<<<<<<< HEAD
 
 <button type="button" class="add-row btn btn-primary">Add Field</button>
 <button type="button" class="delete-row btn btn-primary">Delete Field</button>
 
+=======
+>>>>>>> labtest
 
 {% endblock %}
