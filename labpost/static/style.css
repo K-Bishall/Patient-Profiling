@@ -32,4 +32,10 @@ body {
     margin: 0%;
 }
 
+#labimage #patient_info p {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 120%;
+    text-align: center;
+    margin: 0%;
+}
 

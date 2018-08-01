@@ -28,9 +28,6 @@ class TestModel(models.Model):
         ordering = ['testName']
 
 
-# FLAG_CHOICE = [('N', 'Normal'), ('H', 'High'), ('L', 'Low'), ]
-
-
 class TestItem (models.Model):
     """This actually represents multivalued attribute of 'User' Table
     in Database which records the lab tests the user has taken.
@@ -43,8 +40,26 @@ class TestItem (models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     testName = models.ForeignKey(TestModel, on_delete = models.PROTECT)
     result = models.FloatField(default=0)
-    dateStamp = models.DateField()
+    dateStamp = models.DateField(auto_now_add=True)
     
-
     def __str__(self):
         return self.testName.testName
+
+
+#Dummy Test Tags for Image Items
+TAGS = [('Xray', 'X-Ray'), ('VXray', 'Video X-Ray'), ('Endoscopy','Endoscopy'), ('MRI', 'MRI')]
+
+def user_dir_path(instance, filename):
+    """ files will be uploaded to MEDIA_ROOT/user_<id>/filename """
+    return 'user_{0}/{1}'.format(instance.user.id, filename)
+
+class TestImage (models.Model):
+    """ Model for any image report like X-ray,
+    Endoscopy, Video X-ray """
+
+    id = models.AutoField(primary_key = True)
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    tag = models.CharField(max_length = 20, choices=TAGS)
+    image = models.ImageField(upload_to = user_dir_path)
+    description = models.TextField(max_length=200, blank=True, null=True)
+    dateStamp = models.DateField(auto_now_add=True)

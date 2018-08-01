@@ -3,8 +3,9 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.forms import formset_factory
 from django.utils import timezone
+import datetime
 
-from .forms import TestItemForm, SearchReportForm
+from .forms import TestItemForm, TestImageForm
 from .models import User, TestItem
 
 key = '00001'
@@ -13,7 +14,6 @@ key = '00001'
 def labReportInput(request):
     """Generate lab test input form"""
 
-    testItemFormset = formset_factory(TestItemForm, extra=5)
     template = 'labtest.html'
 
     testItemFormset = formset_factory(TestItemForm, extra=10)
@@ -47,8 +47,8 @@ def labReportInput(request):
     else:
         return render(request, template, {'formset': testItemFormset,'user': user, 'date': date,})
 
-datetest = timezone.now().date()
 
+datetest = datetime.datetime(2018,7,31).date()
 def labReportGenerate(request):
     """ Generates lab report in tabular form """
 
@@ -94,4 +94,28 @@ def labReportGenerate(request):
         'date': date,
         'testResult': testResult,
     })
+
+
+#to upload image report like Xray
+def labImageUpload(request):
+    """ Manage image report upload like Xray """
+    template = 'labimage.html'
+
+    #for test only
+    user = User.objects.get(pk=key)
+    date = timezone.now().date()
+
+    if request.method == 'POST':
+        form = TestImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            testImage = form.save(commit=False)
+            testImage.user = User.objects.get(pk=key)
+            testImage.dateStamp = timezone.now().date()
+            testImage.save()
+
+            return HttpResponseRedirect("")
+    else:
+        form = TestImageForm()
+
+    return render(request, template, {'form': form, 'user': user, 'date':date,})
 
