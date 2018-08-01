@@ -6,11 +6,10 @@ from django.utils import timezone
 import datetime
 
 from .forms import TestItemForm, TestImageForm
-from .models import User, TestItem
+from .models import User, TestItem, TestImage
 
-key = '00001'
+key = '00001' #Dummy key for testing purpose
 
-# Create your views here.
 def labReportInput(request):
     """Generate lab test input form"""
 
@@ -18,6 +17,7 @@ def labReportInput(request):
 
     testItemFormset = formset_factory(TestItemForm, extra=10)
 
+    #dummy data
     user = User.objects.get(pk = key)
     date = timezone.now().date()
 
@@ -83,8 +83,9 @@ def labReportGenerate(request):
             flag = 'L'
         else:
             flag = ''
-        
+        #form individual list
         testR = [testName, result, flag, unit, reference]
+        #append to testResult
         testResult.append(testR)
 
     # print(testResult)
@@ -101,7 +102,7 @@ def labImageUpload(request):
     """ Manage image report upload like Xray """
     template = 'labimage.html'
 
-    #for test only
+    #for test only dummy data
     user = User.objects.get(pk=key)
     date = timezone.now().date()
 
@@ -119,3 +120,19 @@ def labImageUpload(request):
 
     return render(request, template, {'form': form, 'user': user, 'date':date,})
 
+
+#generate report of image report like Xray
+def labImageReport(request):
+    """ Generate report of 'IMAGE FILE' uploaded to 
+    patient's account """
+
+    template = 'labimagereport.html'
+
+    #dummy test data
+    user = User.objects.get(pk = key)
+    date = timezone.now().date()
+
+    #SELECT * FROM TestImage WHERE user = user_id = key and dateStamp = date
+    testResult = TestImage.objects.filter(user_id = key, dateStamp = date)
+
+    return render(request, template, {'testResult':testResult, 'user':user,'date':date})
