@@ -1,5 +1,5 @@
 .vscode
-settings.py
+local_settings.py
 __pycache__
 *.pyc
 migrations
